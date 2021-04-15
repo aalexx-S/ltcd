@@ -293,6 +293,7 @@ cd_func ()
     cnt=`wc -l "$ff" | awk '{print $1}'`
     if [[ cnt -eq 1 ]]; then
       the_new_dir=`cat "$ff" | awk '{gsub(/^[0-9\t ]*|\x1b\[[0-9;]*m|\x1b\[K/, ""); print $0}'`
+      >&2 echo "Target dir not accessible in current dir, jumping to 1 match entry in history."
     elif [[ cnt -gt 1 ]]; then
       echo "     0	<do nothing>" >> "$ff"
       cat "$ff"
